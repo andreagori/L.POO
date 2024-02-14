@@ -1,42 +1,35 @@
 #include <iostream>
 #include <time.h>
 #include <string.h>
-#include "persona.h"
+#include "libreria.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 using std::cin;
 using std::cout;
 using std::endl;
 
+void UsarPersona(Persona *persona)
+{
+    cout << "-----------UTILIZANDO PERSONA ------------" << endl;
+    persona->saludar();
+    persona->hacerreir(rand());
+    cout << "----------- PERSONA UTILIZADA ------------" << endl;
+}
+
+
 int main()
 {
     srand(time(NULL)); // inicializa el generador de numeros aleatorios.
     // crear un objeto, existen dos formas de hacerlo.
-    Persona la_persona("Andrea", 19); // CREANDOLO DE FORMA ESTATICA.
+    Persona persona1("Andrea", 19);
+    Persona persona2("Teresa", 19);
+    Persona *persona3 = new Persona("Abundio", 13); // cada vez que se agrega una persona de esta forma, se debe eliminar con delete
 
-    // LA SEGUNDA FORMA ES DE MANERA DINAMICA, CON APUNTADOR
-    // Se debe crear por el apuntador new, devuelve la direccion de memoria del objeto creado en el heap.
-    Persona *nueva_persona;
-    nueva_persona = new Persona("Teresa", 19);
-    // La diferencia entre estos objetos, es que los estaticos se eliminan al final del programa,
-    // y los dinamicos se eliminan con delete. Se borran explicitamente.
-    // Se deben establecer la visibilidad de los atributos y metodos, si no se establece nada, por defecto es privado.
+    persona1.saludar();
+    UsarPersona(&persona2);
 
-    // La principal dierencia entre los objetos en memoria estatica y los objetos en memoria dinamica es que los objetos estaticos se eliminan
-    // automaticamente cuando el programa o bloque de codigo termina, mientras que los objetos dinamicos no. Es necesario liberar la memoria manualmente (delete)
-
-    // Para utilziar el objeto, podemos acceder a sus miembros (variables o funciones) por medio de los mismos operadores que utilizamos para las estructuras
-    //  . cuando es estatico
-    //  -> cuando es dinamico
-    la_persona.saludar();
-    la_persona.hacerreir(rand());
-    nueva_persona->saludar();
-    nueva_persona->hacerreir(rand());
-
-    Persona tercera_persona("Juan", 20);
-    tercera_persona.saludar();
-
-    delete nueva_persona; // se borra el objeto creado en el heap.
+    cout << "----------- ADIOS ------------" << endl;
+    delete persona3;
 }
 // Los constructores se utilizan para inicializar atributos de la clase. Y reservar memoria.
 
