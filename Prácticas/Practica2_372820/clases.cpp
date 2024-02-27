@@ -1,13 +1,5 @@
 #include "cuenta.h"
 // Aqui se desarrollaran las funciones de las clases, supongo. Validaciones y asi.
-/*
-CuentadeCheques::CuentadeCheques(const Persona& Propietario, int cuenta, int saldoInicial, char operacion)
-{
-	numCuenta = cuenta;
-	saldo = saldoInicial;
-	
-}
-*/
 
 CuentadeCheques::CuentadeCheques(const Persona& Propietario, int cuenta, int saldoInicial)
 {
